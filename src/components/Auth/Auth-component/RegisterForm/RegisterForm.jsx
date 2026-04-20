@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Styles from '../LoginForm/Form.module.css';
 import PopupNotification from '../../../common/Popup/PopupNotification';
+import { API_URL } from '../../../../config/api';
 
 const RegisterForm = ({ setAuthMode }) => {
     const [step, setStep] = useState(1);
@@ -48,7 +49,7 @@ const RegisterForm = ({ setAuthMode }) => {
         setIsLoading(true);
         try {
             // 2. Kiểm tra Email và Username đã tồn tại chưa
-            const checkResponse = await fetch('http://localhost:5000/api/auth/check-user', {
+            const checkResponse = await fetch(`${API_URL}/auth/check-user`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -72,7 +73,7 @@ const RegisterForm = ({ setAuthMode }) => {
             }
 
             // 3. Nếu không trùng lặp, tiến hành gửi OTP
-            const response = await fetch('http://localhost:5000/api/auth/send-otp', {
+            const response = await fetch(`${API_URL}/auth/send-otp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: formData.email })
@@ -114,7 +115,7 @@ const RegisterForm = ({ setAuthMode }) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch(`${API_URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

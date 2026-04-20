@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from './MessageItem.module.css';
+import { getAvatarUrl } from '../../../../../../config/api';
 import MessageAttachment from '../MessageAttachment';
 import VoiceMessagePlayer from '../VoiceMessagePlayer';
 import CallMessageBubble from '../CallMessageBubble/CallMessageBubble';
@@ -45,7 +46,7 @@ const MessageItem = ({ msg, index, currentUserId, currentUser, onStartCall }) =>
         >
             {/* Avatar người khác */}
             {!isMyMessage && (
-                <img src={avatarUrl} alt="avatar" className={Styles.messageAvatar} />
+                <img src={getAvatarUrl(avatarUrl)} alt="avatar" className={Styles.messageAvatar} />
             )}
 
             <div className={Styles.messageBody}>
@@ -100,7 +101,7 @@ const MessageItem = ({ msg, index, currentUserId, currentUser, onStartCall }) =>
 
             {/* Avatar của mình */}
             {isMyMessage && (
-                <img src={avatarUrl} alt="avatar" className={Styles.messageAvatar} />
+                <img src={getAvatarUrl(avatarUrl)} alt="avatar" className={Styles.messageAvatar} />
             )}
         </div>
     );

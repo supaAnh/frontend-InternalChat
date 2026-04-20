@@ -3,6 +3,7 @@ import { User, LogOut, Shield } from 'lucide-react';
 import Styles from './Titles.module.css';
 import UserInfo from '../../../Auth/Auth-component/UserInfo/UserInfo';
 import PopupNotification from '../../../common/Popup/PopupNotification';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 
 const Titles = ({ currentUser, onUpdateUser }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -54,7 +55,7 @@ const Titles = ({ currentUser, onUpdateUser }) => {
 
             // Gửi thông báo đăng xuất lên Backend kèm theo userId
             if (token && currentUserId) {
-                const response = await fetch('http://localhost:5000/api/auth/logout', {
+                const response = await fetch(`${API_URL}/auth/logout`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -112,7 +113,7 @@ const Titles = ({ currentUser, onUpdateUser }) => {
                     >
                         {/* Hiển thị avatar hoặc placeholder */}
                         {currentUser?.avatar ? (
-                            <img src={currentUser.avatar} alt="avatar" className={Styles.avatar} />
+                            <img src={getAvatarUrl(currentUser.avatar)} alt="avatar" className={Styles.avatar} />
                         ) : (
                             <div className={Styles.avatarPlaceholder}></div>
                         )}

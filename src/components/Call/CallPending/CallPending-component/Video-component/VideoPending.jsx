@@ -13,7 +13,6 @@ const videoConstraints = {
     height: 720
 };
 
-// 1. Thêm prop onCancelCall
 const VideoPending = forwardRef(({ currentChat, isGroup = false, onCancelCall }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isMuted, setIsMuted] = useState(false);

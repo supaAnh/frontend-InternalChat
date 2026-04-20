@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Styles from './ChatList.module.css';
 import useSoundEffect from '../../../../hooks/useSoundEffect';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 
 const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, socket, externalFetchTrigger, activeTab }) => {
     // STATE QUẢN LÝ DANH SÁCH CHAT
@@ -19,7 +20,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
         const fetchChats = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/conversations/chat-list', {
+                const response = await fetch(`${API_URL}/conversations/chat-list`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 
@@ -387,7 +388,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
 
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${chatToDelete.id}`, {
+            const response = await fetch(`${API_URL}/conversations/${chatToDelete.id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -453,7 +454,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                     >
                         <div className={Styles.avatarWrapper}>
                             {chat.avatar ? (
-                                <img src={chat.avatar} alt="avatar" className={Styles.avatar} />
+                                <img src={getAvatarUrl(chat.avatar)} alt="avatar" className={Styles.avatar} />
                             ) : (
                                 <div className={Styles.avatarPlaceholder}></div>
                             )}

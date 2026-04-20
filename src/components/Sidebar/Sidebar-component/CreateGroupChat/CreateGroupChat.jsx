@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Styles from './CreateGroupChat.module.css';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 
 const CreateGroupChat = ({ isOpen, onClose, onGroupCreated, socket }) => {
     const [groupName, setGroupName] = useState('');
@@ -18,7 +19,7 @@ const CreateGroupChat = ({ isOpen, onClose, onGroupCreated, socket }) => {
         const fetchUsers = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/users/get-all-user', {
+                const response = await fetch(`${API_URL}/users/get-all-user`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 
@@ -80,7 +81,7 @@ const CreateGroupChat = ({ isOpen, onClose, onGroupCreated, socket }) => {
         
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/conversations/group', {
+            const response = await fetch(`${API_URL}/conversations/group`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -177,7 +178,7 @@ const CreateGroupChat = ({ isOpen, onClose, onGroupCreated, socket }) => {
                                 <div className={Styles.userInfo}>
                                     <div className={Styles.avatarWrapper}>
                                         {user.avatar ? (
-                                            <img src={user.avatar} alt="avatar" className={Styles.avatar} />
+                                            <img src={getAvatarUrl(user.avatar)} alt="avatar" className={Styles.avatar} />
                                         ) : (
                                             <div className={Styles.avatarPlaceholder}></div>
                                         )}

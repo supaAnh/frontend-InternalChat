@@ -6,6 +6,7 @@ import GroupMembersModal from './ChatHeader-component/GroupMembersModal/GroupMem
 import RenameModal from './ChatHeader-component/RenameModal/RenameModal';
 import GroupAvatarModal from './ChatHeader-component/GroupAvatarModal/GroupAvatarModal';
 import ConfirmModal from './ChatHeader-component/ConfirmModal/ConfirmModal';
+import { API_URL } from '../../../../config/api';
 
 const ChatHeader = ({ currentChat, onStartCall, currentUser, socket, onLeaveGroup, onDeleteGroup, onGroupUpdated, onOpenLeftSidebar, onOpenRightSidebar }) => {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -74,7 +75,7 @@ const ChatHeader = ({ currentChat, onStartCall, currentUser, socket, onLeaveGrou
         setIsLeaveLoading(true);
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${getConvId()}/leave`, {
+            const response = await fetch(`${API_URL}/conversations/${getConvId()}/leave`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -105,7 +106,7 @@ const ChatHeader = ({ currentChat, onStartCall, currentUser, socket, onLeaveGrou
         setIsDeleteLoading(true);
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${getConvId()}/group`, {
+            const response = await fetch(`${API_URL}/conversations/${getConvId()}/group`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

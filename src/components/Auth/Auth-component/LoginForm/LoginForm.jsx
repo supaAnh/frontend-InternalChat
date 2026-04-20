@@ -1,6 +1,7 @@
     import React, { useState } from 'react';
     import Styles from './Form.module.css';
     import PopupNotification from '../../../common/Popup/PopupNotification';
+import { API_URL } from '../../../../config/api';
     
     // Nhận setAuthMode từ AuthPage
     const LoginForm = ({ setAuthMode }) => {
@@ -43,7 +44,7 @@
 
         try {
             // 2. Gọi API Login
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

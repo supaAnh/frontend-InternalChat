@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Styles from './GroupAvatarModal.module.css';
 import { Plus } from 'lucide-react';
+import { API_URL, getAvatarUrl } from '../../../../../../config/api';
 
 const GroupAvatarModal = ({ conversationId, currentAvatar, currentChat, socket, onGroupUpdated, onClose }) => {
     const [avatarFile, setAvatarFile] = useState(null);
@@ -27,7 +28,7 @@ const GroupAvatarModal = ({ conversationId, currentAvatar, currentChat, socket, 
             const token = sessionStorage.getItem('token');
             const formData = new FormData();
             formData.append('file', avatarFile);
-            const response = await fetch(`http://localhost:5000/api/conversations/${conversationId}/avatar`, {
+            const response = await fetch(`${API_URL}/conversations/${conversationId}/avatar`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formData
@@ -67,7 +68,7 @@ const GroupAvatarModal = ({ conversationId, currentAvatar, currentChat, socket, 
                 <div className={Styles.avatarUploadArea}>
                     <div className={Styles.avatarClickable} onClick={handleAvatarClick}>
                         {avatarPreview ? (
-                            <img src={avatarPreview} alt="preview" className={Styles.avatarPreview} />
+                            <img src={getAvatarUrl(avatarPreview)} alt="preview" className={Styles.avatarPreview} />
                         ) : (
                             <div className={Styles.avatarPreviewPlaceholder}></div>
                         )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import styles from './Dashboard.module.css';
+import { BASE_URL, API_URL } from '../../config/api';
 
 // Vùng imports các module/components con
 import DashboardSidebar from './components/DashboardSidebar/DashboardSidebar';
@@ -32,7 +33,7 @@ const Dashboard = () => {
 
     // Socket Setup for Real-time Admin Logs
     useEffect(() => {
-        const socket = io('http://localhost:5000', { transports: ['websocket'] });
+        const socket = io(BASE_URL, { transports: ['websocket'] });
         socket.on('new_admin_log', () => {
             // Kích hoạt auto reload logs và users table
             setRefreshTrigger(prev => prev + 1);
@@ -64,7 +65,7 @@ const Dashboard = () => {
     const fetchLogs = async () => {
         try {
             const token = sessionStorage.getItem('token');
-            let url = `http://localhost:5000/api/admin/logs?`;
+            let url = `${API_URL}/admin/logs?`;
             if (filterAdmin !== 'all') url += `adminId=${filterAdmin}&`;
             if (filterStartDate) url += `startDate=${filterStartDate}&`;
             if (filterEndDate) url += `endDate=${filterEndDate}&`;
@@ -90,13 +91,13 @@ const Dashboard = () => {
         const token = sessionStorage.getItem('token');
         try {
             // Fetch Stats
-            const statsRes = await fetch('http://localhost:5000/api/admin/stats', {
+            const statsRes = await fetch(`${API_URL}/admin/stats`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (statsRes.ok) setStats(await statsRes.json());
 
             // Fetch Users
-            const usersRes = await fetch('http://localhost:5000/api/admin/users', {
+            const usersRes = await fetch(`${API_URL}/admin/users`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (usersRes.ok) setUsers(await usersRes.json());
@@ -111,7 +112,7 @@ const Dashboard = () => {
     const handleRoleChange = async (targetId, newRole) => {
         const token = sessionStorage.getItem('token');
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/users/${targetId}/role`, {
+            const res = await fetch(`${API_URL}/admin/users/${targetId}/role`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -135,7 +136,7 @@ const Dashboard = () => {
         const token = sessionStorage.getItem('token');
         const newStatus = !currentStatus;
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/users/${targetId}/status`, {
+            const res = await fetch(`${API_URL}/admin/users/${targetId}/status`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -158,7 +159,7 @@ const Dashboard = () => {
     const handleSetupRoot = async () => {
         const token = sessionStorage.getItem('token');
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/setup-root`, {
+            const res = await fetch(`${API_URL}/admin/setup-root`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

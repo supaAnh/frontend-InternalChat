@@ -4,6 +4,7 @@ import ChatHeader from './ChatWindow-component/ChatHeader/ChatHeader';
 import MessageList from './ChatWindow-component/MessageList/MessageList';
 import ChatInput from './ChatWindow-component/ChatInput/ChatInput';
 import TypingIndicator from './ChatWindow-component/TypingIndicator/TypingIndicator';
+import { API_URL } from '../../config/api';
 
 const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGroup, onDeleteGroup, onGroupUpdated, onOpenLeftSidebar, onOpenRightSidebar }) => {
   const [messages, setMessages] = useState([]);
@@ -39,7 +40,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
         }
 
         const [response] = await Promise.all([
-          fetch(`http://localhost:5000/api/messages/${targetId}`, {
+          fetch(`${API_URL}/messages/${targetId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           }),
           new Promise(resolve => setTimeout(resolve, 500))
@@ -158,7 +159,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
 
     // === LẮNG NGHE SỰ KIỆN QUẢN LÝ NHÓM ===
 
-    // Thành viên rời nhóm → thêm tin nhắn hệ thống vào chat
+    // Thành viên rời nhóm -> thêm tin nhắn hệ thống vào chat
     const handleGroupMemberLeft = (data) => {
         const chat = currentChatRef.current;
         if (!chat) return;
@@ -168,7 +169,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
         }
     };
 
-    // Đổi tên nhóm → thêm tin nhắn hệ thống
+    // Đổi tên nhóm -> thêm tin nhắn hệ thống
     const handleGroupRenamed = (data) => {
         const chat = currentChatRef.current;
         if (!chat) return;
@@ -188,7 +189,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
         }
     };
 
-    // Đổi ảnh nhóm → thêm tin nhắn hệ thống
+    // Đổi ảnh nhóm -> thêm tin nhắn hệ thống
     const handleGroupAvatarChanged = (data) => {
         const chat = currentChatRef.current;
         if (!chat) return;
@@ -219,7 +220,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
         }
     };
 
-    // Thêm thành viên → thêm tin nhắn hệ thống
+    // Thêm thành viên -> thêm tin nhắn hệ thống
     const handleGroupMemberAdded = (data) => {
         const chat = currentChatRef.current;
         if (!chat) return;
@@ -229,7 +230,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
         }
     };
 
-    // Xoá thành viên → thêm tin nhắn hệ thống hoặc đóng chat nếu mình bị xoá
+    // Xoá thành viên -> thêm tin nhắn hệ thống hoặc đóng chat nếu mình bị xoá
     const handleGroupMemberRemoved = (data) => {
         const chat = currentChatRef.current;
         if (!chat) return;
@@ -329,7 +330,7 @@ const ChatWindow = ({ currentChat, currentUser, socket, onStartCall, onLeaveGrou
           formData.append('file', messageData.file); 
       }
 
-      const response = await fetch('http://localhost:5000/api/messages/send', {
+      const response = await fetch(`${API_URL}/messages/send`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

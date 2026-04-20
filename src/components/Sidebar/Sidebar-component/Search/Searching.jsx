@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Styles from './Searching.module.css';
 import { Search, X } from 'lucide-react';
 import '../../../../index.css';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 
 const Searching = ({ onSelectChat }) => {
   const [isSearching, setIsSearching] = useState(false);
@@ -23,7 +24,7 @@ const Searching = ({ onSelectChat }) => {
       try {
         const token = sessionStorage.getItem('token');
 
-        const response = await fetch('http://localhost:5000/api/users/get-all-user', {
+        const response = await fetch(`${API_URL}/users/get-all-user`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -117,7 +118,7 @@ const Searching = ({ onSelectChat }) => {
               >
                 {/* Ưu tiên hiển thị Avatar, nếu không có thì dùng div trống */}
                 {user.avatar ? (
-                  <img src={user.avatar} alt="avatar" className={Styles.resultAvatar} />
+                  <img src={getAvatarUrl(user.avatar)} alt="avatar" className={Styles.resultAvatar} />
                 ) : (
                   <div className={Styles.resultAvatarPlaceholder}>
                     {/* Lấy chữ cái đầu tiên của tên làm avatar mặc định */}

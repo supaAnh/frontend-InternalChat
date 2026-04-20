@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './AddUserForm.module.css';
+import { API_URL } from '../../../../config/api';
 
 const AddUserForm = ({ currentUser, onAddSuccess, onClose }) => {
     const [newUserForm, setNewUserForm] = useState({ username: '', email: '', password: '', role: 'user' });
@@ -8,7 +9,7 @@ const AddUserForm = ({ currentUser, onAddSuccess, onClose }) => {
         e.preventDefault();
         try {
             const token = sessionStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/admin/users`, {
+            const res = await fetch(`${API_URL}/admin/users`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

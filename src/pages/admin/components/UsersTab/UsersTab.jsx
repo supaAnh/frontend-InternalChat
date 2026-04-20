@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './UsersTab.module.css';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 import AddUserForm from '../AddUserForm/AddUserForm';
 
 const UsersTab = ({ users, currentUser, fetchData, handleRoleChange, handleToggleStatus }) => {
@@ -74,7 +75,7 @@ const UsersTab = ({ users, currentUser, fetchData, handleRoleChange, handleToggl
                             <tr key={u._id}>
                                 <td data-label="Nhân viên">
                                     <div className={styles.userInfo}>
-                                        <img src={u.avatar || '/default-avatar.png'} alt="avatar" className={styles.userAvatar} />
+                                        <img src={getAvatarUrl(u.avatar || '/default-avatar.png')} alt="avatar" className={styles.userAvatar} />
                                         <div className={styles.userDetails}>
                                             <div className={styles.userName}>{u.displayName || u.username}</div>
                                             <div className={styles.userEmail} style={{ fontSize: '0.8rem', color: '#888' }}>{u.email}</div>

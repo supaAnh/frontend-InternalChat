@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Styles from './RightSidebar.module.css';
+import { API_URL, getAvatarUrl } from '../../config/api';
 
 const formatTimeAgo = (lastActive, currentTime) => {
     if (!lastActive) return "";
@@ -65,7 +66,7 @@ const RightSidebar = ({ onlineUsers, onSelectContact, selectedChatId }) => {
                         >
                             <div className={Styles.avatarWrapper}>
                                 {user.avatar ? (
-                                    <img src={user.avatar} alt="avatar" className={Styles.avatar} />
+                                    <img src={getAvatarUrl(user.avatar)} alt="avatar" className={Styles.avatar} />
                                 ) : (
                                     <div className={Styles.avatarPlaceholder}>
                                         {user.name?.charAt(0).toUpperCase()}

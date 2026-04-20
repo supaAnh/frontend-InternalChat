@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from './HeaderInfo.module.css';
+import { getAvatarUrl } from '../../../../../../config/api';
 import { Menu } from 'lucide-react';
 
 const formatTimeAgo = (lastActive, currentTime) => {
@@ -33,7 +34,7 @@ const HeaderInfo = ({ currentChat, currentUserId, currentTime, displayName, onOp
             />
             {currentChat?.avatar || currentChat?.groupAvatar ? (
                 <img
-                    src={currentChat.avatar || currentChat.groupAvatar}
+                    src={getAvatarUrl(currentChat.avatar || currentChat.groupAvatar)}
                     alt="avatar"
                     className={Styles.avatar}
                 />

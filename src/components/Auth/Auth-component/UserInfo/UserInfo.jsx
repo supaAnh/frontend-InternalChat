@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Plus } from 'lucide-react';
 import Styles from './UserInfo.module.css';
+import { API_URL, getAvatarUrl } from '../../../../config/api';
 const UserInfo = ({ isOpen, onClose, currentUser, onUpdateUser }) => {
     // Khởi tạo state từ dữ liệu user hiện tại
     const [displayName, setDisplayName] = useState(currentUser?.displayName || '');
@@ -66,7 +68,7 @@ const UserInfo = ({ isOpen, onClose, currentUser, onUpdateUser }) => {
             const token = sessionStorage.getItem('token') || localStorage.getItem('token'); // Lấy token để xác thực
 
             // Gọi API cập nhật profile
-            const response = await fetch('http://localhost:5000/api/users/update-profile', {
+            const response = await fetch(`${API_URL}/users/update-profile`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -108,7 +110,7 @@ const UserInfo = ({ isOpen, onClose, currentUser, onUpdateUser }) => {
         }
     };
 
-    return (
+    return createPortal(
         <div className={Styles.modalOverlay} onClick={handleOverlayClick}>
             <div className={Styles.formContainer} onClick={(e) => e.stopPropagation()}>
                 <h2 className={Styles.title}>Thông tin cá nhân</h2>
@@ -125,7 +127,7 @@ const UserInfo = ({ isOpen, onClose, currentUser, onUpdateUser }) => {
                     <div className={Styles.avatarSection}>
                         <div className={Styles.avatarWrapper} onClick={handleAvatarClick}>
                             {avatarPreview ? (
-                                <img src={avatarPreview} alt="Avatar Preview" className={Styles.avatarImage} />
+                                <img src={getAvatarUrl(avatarPreview)} alt="Avatar Preview" className={Styles.avatarImage} />
                             ) : (
                                 <div className={Styles.avatarPlaceholder}></div>
                             )}
@@ -163,7 +165,8 @@ const UserInfo = ({ isOpen, onClose, currentUser, onUpdateUser }) => {
                     </div>
                 </form>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

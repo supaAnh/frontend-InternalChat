@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Styles from '../LoginForm/Form.module.css';
 import PopupNotification from '../../../common/Popup/PopupNotification';
+import { API_URL } from '../../../../config/api';
 
 const ResetPassword = ({ setAuthMode }) => {
     const [step, setStep] = useState(1);
@@ -36,7 +37,7 @@ const ResetPassword = ({ setAuthMode }) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/forgot-password', {
+            const response = await fetch(`${API_URL}/auth/forgot-password`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: formData.email })
@@ -90,7 +91,7 @@ const ResetPassword = ({ setAuthMode }) => {
         setIsLoading(true);
         
         try {
-            const response = await fetch('http://localhost:5000/api/auth/reset-password', {
+            const response = await fetch(`${API_URL}/auth/reset-password`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

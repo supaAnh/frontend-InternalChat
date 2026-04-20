@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import Styles from './RenameModal.module.css';
+import { API_URL } from '../../../../../../config/api';
 
-/**
- * RenameModal - Modal đổi tên nhóm hoặc nickname 1-1
- * Props:
- *   - isGroup: bool
- *   - initialName: string
- *   - conversationId: string
- *   - currentChat: object
- *   - currentUserId: string
- *   - socket: object
- *   - onGroupUpdated: fn(updatedChat, systemMessage)
- *   - onClose: fn
- */
+
 const RenameModal = ({ isGroup, initialName, conversationId, currentChat, currentUserId, socket, onGroupUpdated, onClose }) => {
     const [newName, setNewName] = useState(initialName || '');
     const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +13,7 @@ const RenameModal = ({ isGroup, initialName, conversationId, currentChat, curren
         try {
             if (isGroup) {
                 const token = sessionStorage.getItem('token');
-                const response = await fetch(`http://localhost:5000/api/conversations/${conversationId}/rename`, {
+                const response = await fetch(`${API_URL}/conversations/${conversationId}/rename`, {
                     method: 'PUT',
                     headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
                     body: JSON.stringify({ newName: newName.trim() })

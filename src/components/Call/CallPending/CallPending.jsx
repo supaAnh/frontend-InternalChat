@@ -3,7 +3,6 @@ import VoicePending from './CallPending-component/Call-component/VoicePending';
 import VideoPending from './CallPending-component/Video-component/VideoPending';
 
 const CallPending = forwardRef(({ currentChat, isGroup = false, onCancelCall }, ref) => {
-    // Tạo ref để điều khiển 2 component con
     const voiceRef = useRef(null);
     const videoRef = useRef(null);
 
@@ -25,7 +24,6 @@ const CallPending = forwardRef(({ currentChat, isGroup = false, onCancelCall }, 
 
     return (
         <>
-            {/* Truyền prop onCancelCall xuống các component con */}
             <VoicePending 
                 ref={voiceRef} 
                 currentChat={currentChat} 

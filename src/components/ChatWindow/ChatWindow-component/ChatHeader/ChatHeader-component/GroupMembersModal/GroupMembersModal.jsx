@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Styles from './GroupMembersModal.module.css';
 import { Plus, Shield, UserMinus } from 'lucide-react';
+import { API_URL, getAvatarUrl } from '../../../../../../config/api';
 
-/**
- * GroupMembersModal - Modal quản lý thành viên nhóm
- * Props:
- *   - conversationId: string
- *   - currentUserId: string
- *   - socket: object
- *   - currentChat: object
- *   - onGroupUpdated: fn(updatedChat, systemMessage)
- *   - onClose: fn
- */
+
 const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat, onGroupUpdated, onClose }) => {
     const [members, setMembers] = useState([]);
     const [adminId, setAdminId] = useState(null);
 
-    // Add member states
     const [showAddMember, setShowAddMember] = useState(false);
     const [addMemberSearch, setAddMemberSearch] = useState('');
     const [allUsers, setAllUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
 
-    // Context menu state (right-click on member)
     const [contextMenu, setContextMenu] = useState({ visible: false, x: 0, y: 0, memberId: null, memberName: '' });
 
     // Đóng context menu khi click ra ngoài
@@ -50,7 +40,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
     const fetchMembers = async () => {
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${conversationId}/members`, {
+            const response = await fetch(`${API_URL}/conversations/${conversationId}/members`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -79,7 +69,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
         setShowAddMember(true);
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/users/get-all-user', {
+            const response = await fetch(`${API_URL}/users/get-all-user`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -98,7 +88,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
     const handleAddMember = async (userId) => {
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${conversationId}/add-member`, {
+            const response = await fetch(`${API_URL}/conversations/${conversationId}/add-member`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ memberId: userId })
@@ -143,7 +133,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
         if (!contextMenu.memberId) return;
         try {
             const token = sessionStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/conversations/${conversationId}/remove-member`, {
+            const response = await fetch(`${API_URL}/conversations/${conversationId}/remove-member`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ memberId: contextMenu.memberId })
@@ -202,7 +192,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
                                         return (
                                             <div key={userId} className={Styles.searchResultItem}>
                                                 {user.avatar ? (
-                                                    <img src={user.avatar} alt="avatar" className={Styles.memberAvatar} />
+                                                    <img src={getAvatarUrl(user.avatar)} alt="avatar" className={Styles.memberAvatar} />
                                                 ) : (
                                                     <div className={Styles.memberAvatarPlaceholder}>
                                                         {userName.charAt(0).toUpperCase()}
@@ -234,7 +224,7 @@ const GroupMembersModal = ({ conversationId, currentUserId, socket, currentChat,
                                     onContextMenu={(e) => handleMemberRightClick(e, member)}
                                 >
                                     {member.avatar ? (
-                                        <img src={member.avatar} alt="avatar" className={Styles.memberAvatar} />
+                                        <img src={getAvatarUrl(member.avatar)} alt="avatar" className={Styles.memberAvatar} />
                                     ) : (
                                         <div className={Styles.memberAvatarPlaceholder}>
                                             {memberName.charAt(0).toUpperCase()}

@@ -11,10 +11,11 @@ import VideoCall from '../../components/Call/Calling/VideoCall/VideoCall';
 import styles from './Mainpage.module.css';
 import { io } from 'socket.io-client';
 import useSoundEffect from '../../hooks/useSoundEffect';
+import { BASE_URL, getAvatarUrl } from '../../config/api';
 const ICE_SERVERS = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }] };
 
 // Khởi tạo kết nối Socket
-const socket = io('http://localhost:5000', {
+const socket = io(BASE_URL, {
   transports: ['websocket'],
   upgrade: false,
   reconnection: true,
@@ -105,7 +106,7 @@ const Mainpage = () => {
     const fetchUsers = async () => {
       try {
         const token = sessionStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/users/get-sidebar-user', {
+        const response = await fetch(`${BASE_URL}/api/users/get-sidebar-user`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -123,7 +124,7 @@ const Mainpage = () => {
             id: user._id || user.id,
             _id: user._id || user.id,
             name: user.displayName || user.username || user.name,
-            avatar: user.avatar || '',
+            avatar: getAvatarUrl(user.avatar || ''),
             isOnline: user.isOnline,
             lastActive: user.lastActive
           }));
@@ -473,7 +474,7 @@ const Mainpage = () => {
       id: targetId,
       _id: targetId,
       name: selectedInfo.name || selectedInfo.displayName || selectedInfo.groupName || selectedInfo.username || "Người dùng",
-      avatar: selectedInfo.avatar || '/default-avatar.png',
+      avatar: getAvatarUrl(selectedInfo.avatar || '/default-avatar.png'),
       isOnline,
       lastActive,
       // Giữ memberCount cho ChatHeader group

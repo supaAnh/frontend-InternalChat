@@ -42,7 +42,6 @@ const VoiceCall = forwardRef(({ currentChat, remoteStreams, localStream, current
             if (el && el.srcObject !== stream) {
                 el.srcObject = stream;
                 el.play().catch(error => {
-                    // Ignore autoplay errors
                 });
             }
         });
