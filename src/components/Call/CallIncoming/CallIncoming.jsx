@@ -3,6 +3,7 @@ import { Phone, PhoneOff, Video } from 'lucide-react';
 import Styles from './CallIncoming.module.css';
 import '../../../index.css';
 import useSoundEffect from '../../../hooks/useSoundEffect';
+import { getAvatarUrl } from '../../../config/api';
 
 const CallIncoming = forwardRef(({ callerInfo, isVideoCall, onAccept, onDecline }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -41,7 +42,7 @@ const CallIncoming = forwardRef(({ callerInfo, isVideoCall, onAccept, onDecline 
             <div className={Styles.callerInfo}>
                 <div className={Styles.avatarWrapper}>
                     {avatar ? (
-                        <img src={avatar} alt="avatar" className={Styles.avatar} />
+                        <img src={getAvatarUrl(avatar)} alt="avatar" className={Styles.avatar} />
                     ) : (
                         <div className={Styles.avatarPlaceholder}></div>
                     )}

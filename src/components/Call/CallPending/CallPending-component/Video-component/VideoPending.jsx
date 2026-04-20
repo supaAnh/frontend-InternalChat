@@ -6,6 +6,7 @@ import {
 import Styles from './VideoPending.module.css';
 import '../../../../../index.css';
 import useSoundEffect from '../../../../../hooks/useSoundEffect';
+import { getAvatarUrl } from '../../../../../config/api';
 
 const videoConstraints = {
     facingMode: "user",
@@ -210,7 +211,7 @@ const VideoPending = forwardRef(({ currentChat, isGroup = false, onCancelCall },
                     <div key={index} className={Styles.participantCard}>
                         <div className={Styles.avatarWrapper}>
                             {p?.avatar ? (
-                                <img src={p.avatar} alt="avatar" className={Styles.avatar} />
+                                <img src={getAvatarUrl(p.avatar)} alt="avatar" className={Styles.avatar} />
                             ) : (
                                 <div className={Styles.avatarPlaceholder}></div>
                             )}

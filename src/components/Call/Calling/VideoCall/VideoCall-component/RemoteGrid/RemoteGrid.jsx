@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from './RemoteGrid.module.css';
+import { getAvatarUrl } from '../../../../../../config/api';
 
 const getGridClass = (count) => {
     if (count === 1) return Styles.grid1;
@@ -36,7 +37,7 @@ const RemoteGrid = ({ participants, remoteStreams, remoteVideoRefs }) => {
                             <div className={Styles.remoteOverlay}>
                                 <div className={Styles.remoteAvatarWrapper}>
                                     {p?.avatar
-                                        ? <img src={p.avatar} alt="avatar" className={Styles.remoteAvatar} />
+                                        ? <img src={getAvatarUrl(p.avatar)} alt="avatar" className={Styles.remoteAvatar} />
                                         : <div className={Styles.remoteAvatarPlaceholder} />}
                                 </div>
                                 <p className={Styles.remoteName}>{p?.name || 'Người dùng'}</p>

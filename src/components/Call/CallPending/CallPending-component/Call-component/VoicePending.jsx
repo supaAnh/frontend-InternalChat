@@ -3,6 +3,7 @@ import { Volume2, Mic, MicOff, PhoneOff } from 'lucide-react';
 import Styles from './VoicePending.module.css';
 import '../../../../../index.css';
 import useSoundEffect from '../../../../../hooks/useSoundEffect';
+import { getAvatarUrl } from '../../../../../config/api';
 
 const VoicePending = forwardRef(({ currentChat, onCancelCall }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -45,7 +46,7 @@ const VoicePending = forwardRef(({ currentChat, onCancelCall }, ref) => {
             <div className={Styles.callerInfo}>
                 <div className={Styles.avatarWrapper}>
                     {avatar ? (
-                        <img src={avatar} alt="avatar" className={Styles.avatar} />
+                        <img src={getAvatarUrl(avatar)} alt="avatar" className={Styles.avatar} />
                     ) : (
                         <div className={Styles.avatarPlaceholder}></div>
                     )}

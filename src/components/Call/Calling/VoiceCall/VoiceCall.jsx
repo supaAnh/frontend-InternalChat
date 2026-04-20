@@ -1,6 +1,7 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
 import { Volume2, Mic, MicOff, PhoneOff } from 'lucide-react';
 import Styles from '../../CallPending/CallPending-component/Call-component/VoicePending.module.css';
+import { getAvatarUrl } from '../../../../config/api';
 
 const VoiceCall = forwardRef(({ currentChat, remoteStreams, localStream, currentUser, activeCallParticipants, isGroup = false, onEndCall }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -111,7 +112,7 @@ const VoiceCall = forwardRef(({ currentChat, remoteStreams, localStream, current
                                 <div key={pId} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <div style={{ width: '60px', height: '60px', borderRadius: '50%', overflow: 'hidden', border: isConnected ? '3px solid #4CAF50' : '3px solid transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#333' }}>
                                         {p.avatar ? (
-                                            <img src={p.avatar} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                            <img src={getAvatarUrl(p.avatar)} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                         ) : (
                                             <span style={{color: 'white'}}>{(p.name || 'U')[0].toUpperCase()}</span>
                                         )}
@@ -124,7 +125,7 @@ const VoiceCall = forwardRef(({ currentChat, remoteStreams, localStream, current
                 ) : (
                     <div className={Styles.avatarWrapper}>
                         {avatar ? (
-                            <img src={avatar} alt="avatar" className={Styles.avatar} />
+                            <img src={getAvatarUrl(avatar)} alt="avatar" className={Styles.avatar} />
                         ) : (
                             <div className={Styles.avatarPlaceholder}></div>
                         )}

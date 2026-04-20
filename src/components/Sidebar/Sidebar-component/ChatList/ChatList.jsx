@@ -3,6 +3,16 @@ import Styles from './ChatList.module.css';
 import useSoundEffect from '../../../../hooks/useSoundEffect';
 import { API_URL, getAvatarUrl } from '../../../../config/api';
 
+const formatListTime = (timestamp) => {
+    if (!timestamp) return '';
+    const date = new Date(timestamp);
+    if (isNaN(date.getTime())) return '';
+    if (date.toDateString() === new Date().toDateString()) {
+        return date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+    }
+    return date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+};
+
 const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, socket, externalFetchTrigger, activeTab }) => {
     // STATE QUẢN LÝ DANH SÁCH CHAT
     const [chats, setChats] = useState([]);
@@ -46,7 +56,13 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         adminId: chat.adminId || null
                     }));
 
-                    setChats(formattedChats);
+                    // Re-format time locally
+                    const locallyFormattedChats = formattedChats.map(c => ({
+                        ...c,
+                        time: formatListTime(c.timestamp)
+                    }));
+
+                    setChats(locallyFormattedChats);
                 }
             } catch (error) {
                 console.error("Lỗi lấy danh sách chat trong ChatList:", error);
@@ -83,10 +99,8 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                 textToShow = `[Cuộc gọi] ${incomingMessage.text || ''}`.trim();
             }
 
-            const messageTime = incomingMessage.createdAt ? new Date(incomingMessage.createdAt) : new Date();
-            const timeString = messageTime.toDateString() === new Date().toDateString()
-                ? messageTime.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
-                : messageTime.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+            const messageTime = incomingMessage.createdAt ? new Date(incomingMessage.createdAt) : new Date(incomingMessage.timestamp || Date.now());
+            const timeString = formatListTime(messageTime);
 
             setChats(prevChats => {
                 const existingChatIndex = prevChats.findIndex(c => String(c.id) === conversationId);
@@ -144,10 +158,8 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                 textToShow = mediaLabels[outgoingMessage.mediaType] || "[Tập tin đính kèm]";
             }
 
-            const messageTime = outgoingMessage.createdAt ? new Date(outgoingMessage.createdAt) : new Date();
-            const timeString = messageTime.toDateString() === new Date().toDateString()
-                ? messageTime.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
-                : messageTime.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
+            const messageTime = outgoingMessage.createdAt ? new Date(outgoingMessage.createdAt) : new Date(outgoingMessage.timestamp || Date.now());
+            const timeString = formatListTime(messageTime);
 
             setChats(prevChats => {
                 const existingIndex = prevChats.findIndex(c => String(c.id) === conversationId);
@@ -188,7 +200,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         ...c,
                         memberCount: newCount,
                         lastMessage: systemText,
-                        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                        time: formatListTime(Date.now()),
                         timestamp: Date.now()
                     };
                 }
@@ -216,7 +228,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         displayName: data.newName,
                         groupName: data.newName,
                         lastMessage: systemText,
-                        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                        time: formatListTime(Date.now()),
                         timestamp: Date.now()
                     };
                 }
@@ -234,7 +246,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         ...c,
                         avatar: data.newAvatar,
                         lastMessage: systemText,
-                        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                        time: formatListTime(Date.now()),
                         timestamp: Date.now()
                     };
                 }
@@ -253,7 +265,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         ...c,
                         memberCount: newCount,
                         lastMessage: systemText,
-                        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                        time: formatListTime(Date.now()),
                         timestamp: Date.now()
                     };
                 }
@@ -281,7 +293,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                         ...c,
                         memberCount: newCount,
                         lastMessage: systemText,
-                        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                        time: formatListTime(Date.now()),
                         timestamp: Date.now()
                     };
                 }
@@ -301,7 +313,7 @@ const ChatList = ({ selectedChatId, onSelectChat, onDeleteChat, currentUserId, s
                 avatar: group.groupAvatar || '',
                 lastMessage: 'Nhóm vừa được tạo',
                 lastSenderId: null,
-                time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+                time: formatListTime(Date.now()),
                 timestamp: Date.now(),
                 isUnread: true,
                 otherUserId: null,

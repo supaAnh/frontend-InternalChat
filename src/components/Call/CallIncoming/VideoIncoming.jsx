@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import Styles from './VideoIncoming.module.css';
 import useSoundEffect from '../../../hooks/useSoundEffect';
+import { getAvatarUrl } from '../../../config/api';
 
 const videoConstraints = {
     facingMode: "user",
@@ -124,7 +125,7 @@ const VideoIncoming = forwardRef(({ callerInfo, onAccept, onDecline }, ref) => {
             <div className={Styles.callerInfo}>
                 <div className={Styles.avatarWrapper}>
                     {avatar
-                        ? <img src={avatar} alt="avatar" className={Styles.avatar} />
+                        ? <img src={getAvatarUrl(avatar)} alt="avatar" className={Styles.avatar} />
                         : <div className={Styles.avatarPlaceholder} />}
                 </div>
 
