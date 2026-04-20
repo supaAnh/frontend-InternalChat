@@ -6,7 +6,12 @@ export const getAvatarUrl = (url) => {
     
     // Nếu trong Database bị dính cứng http://localhost:5000 từ lần test local trước đó
     if (url.includes('localhost:5000')) {
-        return url.replace(/http:\/\/localhost:5000/g, BASE_URL);
+        url = url.replace(/http:\/\/localhost:5000/g, BASE_URL);
+    }
+    
+    // Nếu vô tình bị lưu dạng http:// thay vì https:// trên môi trường production (Gây lỗi Mixed Content)
+    if (url.startsWith('http://') && !url.includes('localhost')) {
+        url = url.replace('http://', 'https://');
     }
     
     if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
