@@ -1,0 +1,31 @@
+.addUserForm {
+  /* Inherits glass-panel, styles here are specific if needed */
+}
+
+.roleSelect {
+  padding: 6px;
+  border-radius: 8px;
+  background: #272B3A;
+  color: #ffffff;
+  border: 1px solid rgba(139, 141, 147, 0.28);
+}
+
+.actionBtn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.actionBtn:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.activateBtn {
+  background-color: #4CAF50;
+  color: #ffffff;
+}

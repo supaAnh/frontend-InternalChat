@@ -1,0 +1,11 @@
+/* ================= CHAT WINDOW CONTAINER ================= */
+.chatWindowContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg,
+      #1B1E2E 30%,
+      #2E324B 75%);
+  overflow: hidden;
+}

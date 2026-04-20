@@ -1,0 +1,117 @@
+.mainContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;    
+  background-color: #12141c; /* Nền tối tổng thể */
+  gap: 5px;
+}
+
+.sidebarWrapper {
+  flex: 2.5;
+  height: 100%;
+  min-width: 0;
+}
+
+.chatWrapper {
+  flex: 5;  
+  height: 100%;
+  background-color: #12141c; 
+  min-width: 0;
+}
+
+.rightSidebarWrapper {
+  flex: 2.5;
+  height: 100%;
+  min-width: 0;
+}
+
+/* --- RESPONSIVE MOBILE LAYOUT --- */
+.mobileOverlay {
+  display: none;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.mobileMenuBtn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100;
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .mainContainer {
+    position: relative;
+    gap: 0;
+  }
+
+  .sidebarWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background-color: #12141c;
+  }
+
+  .sidebarWrapper.open {
+    transform: translateX(0);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  }
+
+  .rightSidebarWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    max-width: 85vw;
+    height: 100%;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    background-color: #12141c;
+  }
+
+  .rightSidebarWrapper.open {
+    transform: translateX(0);
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+  }
+
+  .chatWrapper {
+    flex: 1;
+    width: 100%;
+  }
+
+  .mobileOverlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+}

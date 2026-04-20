@@ -1,0 +1,113 @@
+/* ================= HEADER ACTIONS ================= */
+.headerActions {
+    display: flex;
+    gap: 20px;
+    color: #a0a0a0;
+}
+
+.icon {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.icon:hover {
+    color: #ffffff;
+}
+
+/* ================= SETTINGS POPUP ================= */
+.settingsContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.settingsMenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 220px;
+    border-radius: 12px;
+    background-color: #2E324B;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    z-index: 100;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
+    animation: slideDownFade 0.2s ease-out forwards;
+}
+
+.settingsMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.settingsMenuItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settingsMenuItem svg {
+    color: #8B8D93;
+    transition: color 0.2s;
+}
+
+.settingsMenuItem:hover svg {
+    color: #ffffff;
+}
+
+.deleteItem:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.deleteItem:hover svg {
+    color: #EF4444;
+}
+
+.leaveItem:hover {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.leaveItem:hover svg {
+    color: #f59e0b;
+}
+
+.divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+}
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === RESPONSIVE MOBILE MENU === */
+.mobileMenuBtnTarget {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mobileMenuBtnTarget {
+        display: block !important;
+    }
+}

@@ -1,0 +1,78 @@
+/* Container bọc ngoài cùng */
+.toggleContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #243045;
+  /* Màu dự phòng nếu ảnh lỗi */
+  border-radius: 50px;
+
+  padding: 6px;
+
+  width: 100%;
+  max-width: 350px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Background lượn sóng */
+.toggleBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+/* Các nút bấm */
+.toggleBtn {
+  flex: 1;
+
+  padding: 20px 0;
+
+  border: none;
+  background: transparent;
+  color: #8c98a4;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Màu chữ khi nút được active */
+.activeText {
+  color: #ffffff;
+}
+
+/* Thanh trượt nền tối (active) */
+.activeSlider {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: calc(50% - 6px);
+
+  background-color: #172B41;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50px;
+  transition: left 0.3s ease;
+  z-index: -1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Vị trí thanh trượt bên Trái (Đăng nhập) */
+.sliderLeft {
+  left: 6px;
+}
+
+/* Vị trí thanh trượt bên Phải (Đăng ký) */
+.sliderRight {
+  left: 50%;
+}

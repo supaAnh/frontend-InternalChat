@@ -1,0 +1,90 @@
+/* --- GIAO DIỆN HÌNH ẢNH --- */
+.attachment-image-wrapper {
+    max-width: 300px !important;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.attachment-image-wrapper a {
+    display: block;
+    width: 100%;
+}
+
+.attachment-image {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+}
+
+.attachment-image:hover {
+    opacity: 0.9;
+}
+
+/* --- GIAO DIỆN FILE CARD --- */
+.attachment-file-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(51, 55, 85, 0.8);
+    padding: 12px 16px;
+    border-radius: 16px; 
+    gap: 12px;
+    min-width: 250px;
+    max-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.file-icon-wrapper {
+    background-color: #3f3f46;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+    margin-right: 8px;
+}
+
+.file-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.file-size {
+    color: #a1a1aa;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.file-download-btn {
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.file-download-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}

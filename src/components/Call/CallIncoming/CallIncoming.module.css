@@ -1,0 +1,125 @@
+.callContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #1B1E2E 30%, #2E324B 75%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.callerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInDown 0.5s ease-out forwards;
+}
+
+.avatarWrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.05), 
+                0 0 0 20px rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    position: relative;
+    /* Hiệu ứng nhịp đập cho avatar */
+    animation: avatarPulse 2s infinite ease-in-out;
+}
+
+.avatar, .avatarPlaceholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.avatarPlaceholder {
+    background-color: #D9D9D9;
+}
+
+.name {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.status {
+    font-size: 16px;
+    color: #a1a3a8;
+    margin: 0;
+}
+
+.controlsWrapper {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 15px;
+    padding: 10px 20px; 
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.controlBtn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.controlBtn:hover {
+    transform: scale(1.1);
+}
+
+.controlBtn:active {
+    transform: scale(0.95);
+}
+
+.endCallBtn {
+    background-color: #E53935;
+}
+
+.endCallBtn:hover {
+    background-color: #D32F2F;
+}
+
+.acceptCallBtn {
+    background-color: #22c55e;
+}
+
+.acceptCallBtn:hover {
+    background-color: #16a34a;
+}
+
+
+/* Các Animation */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes avatarPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4); }
+    70% { transform: scale(1); box-shadow: 0 0 0 30px rgba(52, 199, 89, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+}

@@ -1,0 +1,22 @@
+/* ================= HEADER CONTAINER ================= */
+.header {
+    height: 70px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #1B1E2E;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        height: auto;
+        min-height: 85px;
+        padding: 10px 15px;
+    }
+}
+

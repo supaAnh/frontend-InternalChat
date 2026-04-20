@@ -1,0 +1,300 @@
+/* Khung chứa toàn bộ danh sách */
+.chatListContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+    min-height: 0;
+}
+
+/* Ẩn bớt thanh cuộn mặc định */
+.chatListContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chatListContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+
+/* Bố cục của 1 ô Chat */
+.chatItem {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 12px;
+    border-radius: 15px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Vùng chứa Tên và Tin nhắn */
+.chatInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Tên người gửi */
+.chatName {
+    margin: 0 0 4px 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    /* Hiệu ứng cắt chữ */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Nội dung tin nhắn */
+.chatMessage {
+    margin: 0;
+    color: #8B8D93;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.chatItem:hover {
+    background-color: #272B3A;
+    border: 1px solid rgba(139, 141, 147, 0.28);
+}
+
+/* Avatar */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+
+/* Thời gian */
+.chatTime {
+    color: #8B8D93;
+    font-size: 12px;
+    margin-left: 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Trạng thái khi ô chat ĐƯỢC CHỌN */
+.chatItemSelection {
+    background-color: #272B3A;
+    border: 1px solid rgba(139, 141, 147, 0.28);
+    /* Thêm viền mờ cho nổi bật */
+}
+
+.chatItemSelection:hover {
+    background-color: #272B3A;
+}
+
+.chatMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 10px;
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+/* Làm nổi bật tin nhắn chưa đọc */
+.unreadText {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Làm nổi bật thời gian nếu chưa đọc */
+.unreadTime {
+    color: #4da6ff;
+    font-weight: 600;
+}
+
+/* Chữ "Chưa đọc" bên dưới thời gian */
+.unreadBadge {
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-top: 4px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Số lượng thành viên nhóm */
+.memberCount {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== CONTEXT MENU (Chuột phải) ===== */
+.contextMenu {
+    position: fixed;
+    background: linear-gradient(180deg, #2A2E3F 0%, #1B1E2E 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 6px;
+    min-width: 200px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    animation: contextMenuFadeIn 0.15s ease;
+}
+
+@keyframes contextMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.contextMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: #EF4444;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.contextMenuItem:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* ===== POPUP XÁC NHẬN XOÁ ===== */
+.confirmOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+    animation: overlayFadeIn 0.2s ease;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.confirmBox {
+    background: linear-gradient(180deg,
+            #1B1E2E 30%,
+            #2E324B 75%);
+    padding: 25px 30px;
+    border-radius: 20px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: confirmBoxSlideIn 0.25s ease;
+}
+
+@keyframes confirmBoxSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.confirmBox h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.confirmBox p {
+    color: #8B8D93;
+    font-size: 14px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.confirmBox p strong {
+    color: #ffffff;
+}
+
+.confirmActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btnCancel,
+.btnAccept {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btnCancel {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btnCancel:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btnAccept {
+    background-color: #EF4444;
+    color: #ffffff;
+}
+
+.btnAccept:hover {
+    background-color: #DC2626;
+}

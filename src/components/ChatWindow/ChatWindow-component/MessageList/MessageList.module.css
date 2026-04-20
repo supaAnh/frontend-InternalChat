@@ -1,0 +1,109 @@
+/* ================= MESSAGE AREA ================= */
+.messagesArea {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* TÙY CHỈNH THANH CUỘN DỌC */
+.messagesArea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messagesArea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messagesArea::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.messagesArea::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ================= SKELETON LOADING ================= */
+.skeletonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.skeletonMessage {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    max-width: 75%;
+}
+
+.skeletonLeft {
+    align-self: flex-start;
+}
+
+.skeletonRight {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.skeletonAvatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonBubble {
+    height: 38px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+.short {
+    width: 100px;
+}
+
+.medium {
+    width: 220px;
+}
+
+.long {
+    width: 350px;
+}
+
+.skeletonRight .skeletonBubble {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.08) 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ================= MESSAGES LIST CONTAINER ================= */
+.messagesList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+/* ================= SEEN STATUS ================= */
+.seenStatus {
+    align-self: flex-end;
+    font-size: 11px;
+    color: #8B8D93;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    padding-right: 50px;
+    font-style: italic;
+}
+

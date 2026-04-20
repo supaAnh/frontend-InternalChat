@@ -1,0 +1,160 @@
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 12px;
+    margin-top: 20px;
+    border: 1px solid transparent;
+}
+
+.searchIcon {
+    color: #8B8D93;
+    margin-right: 10px;
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    font-family: inherit;
+    min-width: 0;
+}
+
+.searchContainer:focus-within {
+    border: 1px solid #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.searchWrapper {
+    position: relative;
+    z-index: 50;
+}
+
+.closeIcon {
+    color: #8B8D93;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.closeIcon:hover {
+    color: #ffffff;
+}
+
+.searchOverlay {
+    position: absolute;
+    top: calc(100% + 15px); 
+    left: -10px;
+    width: calc(100% + 20px); 
+    height: calc(100vh - 100px);
+    
+    background-color: rgba(27, 30, 46, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 0 10px 20px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+}
+.searchOverlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.searchOverlay::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.skeletonBox {
+    width: 100%;
+    height: 70px;
+    border-radius: 15px;
+    flex-shrink: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.skeletonAvatar, .skeletonName {
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 100%);
+    background-size: 200% 100%;
+}
+
+.skeletonAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.skeletonName {
+    flex: 1;
+    height: 12px;
+    border-radius: 6px;
+}
+
+.noResultText {
+    color: #ffffff;
+}
+
+.userResultItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.userResultItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.resultAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.resultAvatarPlaceholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    background-color: #3f4458;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.resultInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.resultName {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

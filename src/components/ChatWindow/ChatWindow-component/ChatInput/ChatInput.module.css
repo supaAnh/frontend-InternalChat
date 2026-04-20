@@ -1,0 +1,71 @@
+/* ================= Input Area ================= */
+.bottomArea {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 25px;
+}
+
+.inputArea {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: transparent;
+}
+
+.attachActions {
+    display: flex;
+    gap: 15px;
+    color: #a0a0a0;
+}
+
+.inputWrapper {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.textInput {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    font-family: inherit;
+}
+
+.textInput::placeholder {
+    color: #8B8D93;
+}
+
+.sendAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0a0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sendIcon:hover {
+    color: #ffffff;
+}
+
+/* ================= ICON STATES ================= */
+.icon {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.icon:hover {
+    color: #ffffff;
+}
+
+.activeIcon {
+    color: #3b82f6 !important;
+    transform: scale(1.1);
+}
+

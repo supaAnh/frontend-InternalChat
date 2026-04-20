@@ -1,0 +1,41 @@
+.topBar {
+  padding: 15px 20px;
+  border-bottom: 2px solid rgba(139, 141, 147, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.badge.rootAdmin {
+  background-color: #ff9800;
+  color: #ffffff;
+}
+
+.badge.admin {
+  background-color: #2196F3;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .menuBtn {
+    display: block;
+  }
+}

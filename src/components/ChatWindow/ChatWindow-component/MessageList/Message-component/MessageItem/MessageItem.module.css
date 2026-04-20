@@ -1,0 +1,111 @@
+/* ================= MESSAGE ITEM ================= */
+.messageWrapper {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.messageBody {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+}
+
+.messageInfo {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.senderName {
+    font-size: 13px;
+    font-weight: 600;
+    color: #E2E8F0;
+}
+
+.messageTime {
+    font-size: 11px;
+    color: #8B8D93;
+}
+
+.messageAvatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: #2E324B;
+}
+
+/* ---------------- TIN NHẮN CỦA MÌNH ---------------- */
+.myMessage {
+    justify-content: flex-end;
+}
+
+.myMessage .messageBody {
+    align-items: flex-end;
+}
+
+.myMessage .messageInfo {
+    flex-direction: row-reverse;
+}
+
+.myMessage .messageBubble {
+    border-radius: 20px 20px 4px 20px;
+    background: linear-gradient(135deg, rgba(141, 150, 166, 0.2) 0%, rgba(141, 150, 166, 0.1) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    color: white;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* ---------------- TIN NHẮN NGƯỜI KHÁC ---------------- */
+.theirMessage {
+    justify-content: flex-start;
+}
+
+.theirMessage .messageBody {
+    align-items: flex-start;
+}
+
+.theirMessage .messageBubble {
+    border-radius: 20px 20px 20px 4px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    color: white;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* ================= MESSAGE BUBBLE ================= */
+.messageBubble {
+    width: fit-content;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* ================= SYSTEM MESSAGE ================= */
+.systemMessage {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.systemMessageText {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #8B8D93;
+    font-size: 12px;
+    font-style: italic;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 80%;
+}

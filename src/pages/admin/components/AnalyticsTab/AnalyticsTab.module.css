@@ -1,0 +1,99 @@
+/* Analytics Cards */
+.sectionTitle {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.statCard {
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #272B3A;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.statCard h3 {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* Logs */
+.logContainer {
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.logFilters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(139, 141, 147, 0.28);
+}
+
+.roleSelect {
+  padding: 6px;
+  border-radius: 8px;
+  background: #272B3A;
+  color: #ffffff;
+  border: 1px solid rgba(139, 141, 147, 0.28);
+}
+
+.dateInput {
+  padding: 6px;
+  border-radius: 8px;
+  background: #272B3A;
+  color: #ffffff;
+  border: 1px solid rgba(139, 141, 147, 0.28);
+  color-scheme: dark;
+}
+
+.logList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.logItem {
+  padding: 10px 15px;
+  background-color: #272B3A;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.logTime {
+  font-size: 0.8rem;
+  color: #8B8D93;
+}
+
+.logText {
+  color: #ffffff;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,233 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Khung form tạo nhóm */
+.formContainer {
+    background-color: #212436;
+    width: 450px;
+    border-radius: 24px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.createBtn {
+    background: transparent;
+    border: none;
+    color: #3B82F6;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.createBtn:hover {
+    color: #60A5FA;
+}
+
+/* Khối Input */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.inputGroup label, .memberListSection label {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Input Tên nhóm */
+.textInput {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #1B1E2E;
+    box-sizing: border-box;
+}
+
+/* Phần Danh sách thành viên */
+.memberListSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 200px;
+}
+
+.memberList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    max-height: 250px;
+    padding-right: 5px;
+}
+
+.memberList::-webkit-scrollbar {
+    width: 5px;
+}
+.memberList::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+/* Từng item trong danh sách */
+.memberItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.memberItem:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.avatarWrapper {
+    margin-right: 15px;
+}
+
+.avatar, .avatarPlaceholder {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatarPlaceholder {
+    background-color: #8B8D93;
+}
+
+.userName {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.checkbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #3B82F6;
+}
+
+
+.confirmOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.confirmBox {
+    background: linear-gradient(
+        180deg, 
+        #1B1E2E 30%, 
+        #2E324B 75%
+    );
+    padding: 25px 30px;
+    border-radius: 20px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.confirmBox h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.confirmBox p {
+    color: #8B8D93;
+    font-size: 14px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.confirmActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btnCancel, .btnAccept {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btnCancel {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btnCancel:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btnAccept {
+    background-color: #EF4444;
+    color: #ffffff;
+}
+
+.btnAccept:hover {
+    background-color: #DC2626;
+}

@@ -1,0 +1,119 @@
+/* ================= ATTACHMENT PREVIEW AREA ================= */
+.previewArea {
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.previewItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.imagePreview {
+    max-height: 100px;
+    max-width: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.filePreview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.fileName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.voicePreview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #EF4444;
+    font-weight: 600;
+}
+
+.recordingDot {
+    width: 10px;
+    height: 10px;
+    background-color: #EF4444;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* ================= VOICE ACTIONS ================= */
+.voiceActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stopBtn,
+.sendVoiceBtn {
+    padding: 6px 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.stopBtn {
+    background-color: #EF4444;
+}
+
+.stopBtn:hover {
+    background-color: #dc2626;
+}
+
+.sendVoiceBtn {
+    background-color: #3b82f6;
+}
+
+.sendVoiceBtn:hover {
+    background-color: #2563eb;
+}
+
+/* ================= REMOVE BUTTON ================= */
+.removeBtn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+.removeBtn:hover {
+    background-color: #EF4444;
+}

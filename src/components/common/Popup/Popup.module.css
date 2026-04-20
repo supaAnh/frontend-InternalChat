@@ -1,0 +1,78 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(88, 84, 103, 0.2); 
+    
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Khung Popup chính */
+.popupBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+    width: 320px;
+    border-radius: 50px;
+    background: linear-gradient(
+        180deg, 
+        #1B1E2E 30%, 
+        #2E324B 75%
+    );
+    text-align: center;
+}
+
+.iconWrapper {
+    margin-bottom: 15px;
+}
+
+/* Tiêu đề (Chúc mừng) */
+.title {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    margin: 0 0 10px 0;
+}
+
+/* Nội dung thông báo */
+.message {
+    color: #8B8D93;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 25px 0;
+    padding: 0 10px;
+}
+
+/* Nút Xác nhận bo tròn, viền sáng */
+.confirmBtn {
+    padding: 12px 25px;
+    border-radius: 20px;
+    background: linear-gradient(
+        180deg, 
+        #1B1E2E 30%, 
+        #2E324B 75%
+    );
+    background-color: #262B3D;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+.confirmBtn:hover {
+    background-color: #31374d;
+    transform: translateY(-2px);
+}

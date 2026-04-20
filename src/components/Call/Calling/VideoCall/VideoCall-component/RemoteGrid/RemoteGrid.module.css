@@ -1,0 +1,152 @@
+/* ================= REMOTE GRID ================= */
+.remoteGrid {
+    width: 100%;
+    height: 100%;
+    padding: 20px 24px 110px 24px;
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+}
+
+.grid1 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.grid2 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.grid4 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.gridMany {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-content: center;
+}
+
+/* ================= REMOTE CARD ================= */
+.remoteCard {
+    position: relative;
+    border-radius: 16px;
+    background: #12172a;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: cardIn 0.35s ease-out forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.remoteVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+/* ================= CONNECTING OVERLAY ================= */
+.remoteOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #1B1E2E, #12172a);
+    border-radius: 16px;
+}
+
+.remoteAvatarWrapper {
+    margin-bottom: 16px;
+    animation: avatarPulse 2s infinite ease-in-out;
+}
+
+.remoteAvatar,
+.remoteAvatarPlaceholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.05);
+    object-fit: cover;
+}
+
+.remoteAvatarPlaceholder {
+    background: linear-gradient(135deg, #4B4F68, #2E324B);
+}
+
+.remoteName {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    text-align: center;
+}
+
+.remoteStatus {
+    color: #8B8D93;
+    font-size: 13px;
+    margin: 0;
+    letter-spacing: 0.4px;
+}
+
+@keyframes avatarPulse {
+    0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
+    70% { box-shadow: 0 0 0 22px rgba(99, 102, 241, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+/* ================= NAME TAG ================= */
+.nameTag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+/* ================= WAITING SCREEN ================= */
+.waitingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.waitingText {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .grid2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}

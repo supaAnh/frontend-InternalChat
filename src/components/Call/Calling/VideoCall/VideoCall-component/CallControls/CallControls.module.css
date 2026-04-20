@@ -1,0 +1,61 @@
+/* ================= CALL CONTROLS ================= */
+.controlsWrapper {
+    position: absolute;
+    bottom: 28px;
+    display: flex;
+    gap: 14px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1002;
+}
+
+.controlBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.controlBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.controlBtn:active {
+    transform: scale(0.95);
+}
+
+.btnOff {
+    background-color: #4B4F58;
+}
+
+.btnOff:hover {
+    background-color: #5c616b;
+}
+
+.endCallBtn {
+    background-color: #E53935;
+}
+
+.endCallBtn:hover {
+    background-color: #C62828;
+}
+
+@media (max-width: 1024px) {
+    .controlsWrapper {
+        gap: 8px;
+        padding: 10px 14px;
+        bottom: 20px;
+    }
+}
