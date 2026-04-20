@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import styles from './VoiceMessagePlayer.module.css';
+import { getAvatarUrl as getFileUrl } from '../../../../../../config/api';
 
 const VoiceMessagePlayer = ({ audioUrl }) => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -71,7 +72,7 @@ const VoiceMessagePlayer = ({ audioUrl }) => {
     return (
         <div className={`${styles.playerContainer} glass-panel`}>
             {/* Thẻ audio ẩn đi, chỉ dùng để xử lý logic */}
-            <audio ref={audioRef} src={audioUrl} preload="metadata" />
+            <audio ref={audioRef} src={getFileUrl(audioUrl)} preload="metadata" />
 
             <button className={styles.playBtn} onClick={togglePlayPause}>
                 {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}

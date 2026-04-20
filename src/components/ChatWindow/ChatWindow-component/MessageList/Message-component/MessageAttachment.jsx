@@ -1,8 +1,12 @@
 import React from 'react';
 import { Download, FileText } from 'lucide-react';
 import styles from './MessageAttachment.module.css';
+import { getAvatarUrl as getFileUrl } from '../../../../../../config/api';
 
 const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
+    // Luôn ưu tiên dùng URL tuyệt đối, vá lỗi đường dẫn tương đối (hoặc sai origin)
+    const absoluteFileUrl = getFileUrl(fileUrl);
+    
   // Kiểm tra xem file đính kèm có phải là hình ảnh không
     const isImage = fileType && fileType.startsWith('image/');
 
@@ -11,12 +15,12 @@ const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
         return (
         <div className={styles['attachment-image-wrapper']}>
             <a 
-                href={fileUrl} 
+                href={absoluteFileUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 title="Nhấn để xem ảnh gốc"
             >
-                <img src={fileUrl} alt={fileName} className={styles['attachment-image']} />
+                <img src={absoluteFileUrl} alt={fileName} className={styles['attachment-image']} />
             </a>
         </div>
         );
@@ -26,7 +30,7 @@ const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
         // Ngăn trình duyệt tự ý chuyển trang / mở tab
         e.preventDefault(); 
         try {
-            const response = await fetch(fileUrl);
+            const response = await fetch(absoluteFileUrl);
             if (!response.ok) throw new Error('Network response was not ok');
             
             const blob = await response.blob();
@@ -44,7 +48,7 @@ const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
             window.URL.revokeObjectURL(blobUrl);
         } catch (error) {
             console.warn("Không thể ép tải xuống do CORS, fallback mở link thường:", error);
-            window.open(fileUrl, '_blank'); // Nếu lỗi CORS thì mở tab phụ
+            window.open(absoluteFileUrl, '_blank'); // Nếu lỗi CORS thì mở tab phụ
         }
     };
 
@@ -61,7 +65,7 @@ const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
             </div>
 
             <a 
-                href={fileUrl} 
+                href={absoluteFileUrl} 
                 onClick={handleDownload}
                 className={styles['file-download-btn']} 
                 title="Tải xuống"
