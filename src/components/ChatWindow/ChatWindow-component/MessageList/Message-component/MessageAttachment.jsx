@@ -1,7 +1,7 @@
 import React from 'react';
 import { Download, FileText } from 'lucide-react';
 import styles from './MessageAttachment.module.css';
-import { getAvatarUrl as getFileUrl } from '../../../../../../config/api';
+import { getAvatarUrl as getFileUrl } from '../../../../../config/api';
 
 const MessageAttachment = ({ fileUrl, fileName, fileSize, fileType }) => {
     // Luôn ưu tiên dùng URL tuyệt đối, vá lỗi đường dẫn tương đối (hoặc sai origin)

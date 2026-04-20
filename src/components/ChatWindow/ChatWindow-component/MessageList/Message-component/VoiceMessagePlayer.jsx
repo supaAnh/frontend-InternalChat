@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import styles from './VoiceMessagePlayer.module.css';
-import { getAvatarUrl as getFileUrl } from '../../../../../../config/api';
+import { getAvatarUrl as getFileUrl } from '../../../../../config/api';
 
 const VoiceMessagePlayer = ({ audioUrl }) => {
     const [isPlaying, setIsPlaying] = useState(false);
