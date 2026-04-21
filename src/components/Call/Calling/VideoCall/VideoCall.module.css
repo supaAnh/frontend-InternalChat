@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background: linear-gradient(160deg, #0d0f1a 0%, #1B1E2E 50%, #12172a 100%);
     display: flex;
     flex-direction: column;
@@ -19,5 +19,5 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
 }

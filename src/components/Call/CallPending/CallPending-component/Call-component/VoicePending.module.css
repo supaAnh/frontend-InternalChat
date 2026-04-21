@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background: linear-gradient(180deg, #1B1E2E 30%, #2E324B 75%);
     display: flex;
     flex-direction: column;
